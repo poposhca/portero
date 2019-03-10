@@ -1,8 +1,11 @@
 import readConfig as config
-import QRreader as reader
+import QRreader
+import socketClient as client
 
-data = config.readFile('./config.json')
-line = reader.readInput()
-print(data)
-print("--")
-print(line)
+conf = config.readFile('./config.json')
+host = conf['HOST']
+port = int(conf['PORT'])
+while True:
+    print("Esperando entrada: ")
+    data = QRreader.readInput()
+    respond = client.sendMessage(host, port, data)
