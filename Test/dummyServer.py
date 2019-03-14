@@ -1,7 +1,7 @@
 import socket
 
 HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
-PORT = 65432       # Port to listen on (non-privileged ports are > 1023)
+PORT = 20010        # Port to listen on (non-privileged ports are > 1023)
 
 goodAns = "SI|Invitado: ALEX TRE para el 12/03/19"
 badAnd = "NO|El CODIGO presentado es INVALIDO"
