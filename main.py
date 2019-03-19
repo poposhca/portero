@@ -20,15 +20,18 @@ try:
         print "Seleccionaste : " + str(key)
         print("Esperando entrada: ")
         data = QRreader.readInput()
-        respond = s.sendall(data)
+        s.send(data)
+        respond = s.recv(1024)
         try:
-            isValid = respond.split('|')[0].replace("'", "")
+            messages = respond.split('|')
+            isValid = messages[0].replace("'", "")
+            print messages[1]
             if (isValid == "SI"):
                 print("Valid")
             elif (isValid == "NO"):
                 print("No valid")
         except:
-            print "Data input invalid"
+            print "Data input invalid: %s" % (respond)
 except socket.error, e:
     print "Connection to %s on port %s failed: %s" % (host, port, e)
 finally:
